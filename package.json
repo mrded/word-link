@@ -1,0 +1,23 @@
+{
+  "name": "word-link",
+  "version": "0.0.1",
+  "description": "Allows you to automatically convert specific words into links",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrded/word-link.git"
+  },
+  "keywords": [
+    "word",
+    "link",
+    "replace",
+    "SEO"
+  ],
+  "author": "Dmitry Demenchuk @mrded (dmitry@demenchuk.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrded/word-link/issues"
+  },
+  "homepage": "https://github.com/mrded/word-link#readme",
+  "dependencies": {}
+}

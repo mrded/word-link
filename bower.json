@@ -1,0 +1,16 @@
+{
+  "name": "word-link",
+  "description": "Allows you to automatically convert specific words into links",
+  "main": "index.js",
+  "authors": [
+    "Dmitry Demenchuk @mrded (dmitry@demenchuk.me)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "word",
+    "link",
+    "replace",
+    "SEO"
+  ],
+  "homepage": "https://github.com/mrded/word-link"
+}
