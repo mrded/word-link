@@ -6,11 +6,13 @@ var _uniq = function(items) {
   });
 };
 
-var _createLink = function(text, url) {
+var _createLink = function(text, url, opts) {
+  //@TODO: Generate a link based on opts.
   return '<a href=":url" target="_blank">:text</a>'.replace(':text', text).replace(':url', url);
 }
 
 var _replaceTextElement = function(element, word, url, opts) {
+  //@TODO: Generate pattern based on opts.
   var pattern = "\\b:text\\b";
 
   var findRegexp = new RegExp(pattern.replace(':text', word), 'ig');
@@ -19,11 +21,14 @@ var _replaceTextElement = function(element, word, url, opts) {
   if (found) {
     found = _uniq(found);
 
+    //@TODO: Show debugging message based on opts.
+    console.info(':: Wordlink', found, url);
+
     for (var j in found) {
       var newElement = document.createElement(null);
 
       var foundRegexp = new RegExp(pattern.replace(':text', found[j]), 'g');
-      newElement.innerHTML = element.data.replace(foundRegexp, _createLink(found[j], url));
+      newElement.innerHTML = element.data.replace(foundRegexp, _createLink(found[j], url, opts));
 
       element.parentNode.replaceChild(newElement, element);
     }
@@ -31,6 +36,7 @@ var _replaceTextElement = function(element, word, url, opts) {
 };
 
 var _replaceTagElement = function(element, word, url, opts) {
+  //@TODO: Generate excludedTags based on opts.
   var excludedTags = ['HTMLHeadingElement', 'HTMLAnchorElement'];
 
   for (var i in element.childNodes) {
