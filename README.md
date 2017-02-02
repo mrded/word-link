@@ -38,3 +38,7 @@ WordLink.applyText(html, 'ipsum', 'http://example.com');
 // "<p>Lorem <a href="http://ipsum.com" class="ipsum">ipsum</a> dolor sit amet, consectetur adipiscing elit.</p>"
 ```
 
+## TODOs
+- [ ] A setting for tags to be ignored.
+(Currently only [HTMLHeadingElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHeadingElement) and [HTMLAnchorElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement) are ignored.)
+- [ ] Settings for a link.
