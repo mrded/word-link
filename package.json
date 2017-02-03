@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Allows you to automatically convert specific words into links",
   "main": "index.js",
+  "scripts": {
+    "test": "mocha --check-leaks"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mrded/word-link.git"
@@ -19,5 +22,8 @@
     "url": "https://github.com/mrded/word-link/issues"
   },
   "homepage": "https://github.com/mrded/word-link#readme",
-  "dependencies": {}
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
 }
