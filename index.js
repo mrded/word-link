@@ -24,14 +24,16 @@ var _replaceTextElement = function(element, word, url, opts) {
     //@TODO: Show debugging message based on opts.
     console.info(':: Wordlink', found, url);
 
+    var newElement = document.createElement('span');
+
     for (var j in found) {
-      var newElement = document.createElement(null);
-
       var foundRegexp = new RegExp(pattern.replace(':text', found[j]), 'g');
-      newElement.innerHTML = element.data.replace(foundRegexp, _createLink(found[j], url, opts));
-
-      element.parentNode.replaceChild(newElement, element);
+      element.data = element.data.replace(foundRegexp, _createLink(found[j], url, opts));
     }
+
+    newElement.innerHTML = element.data;
+
+    element.parentNode.replaceChild(newElement, element);
   }
 };
 
@@ -54,7 +56,7 @@ var _replaceTagElement = function(element, word, url, opts) {
 };
 
 module.exports.applyText = function(text, word, url, opts) {
-  var element = document.createElement(null);
+  var element = document.createElement('div');
   element.innerHTML = text;
 
   applyElement(element, word, url, opts);
