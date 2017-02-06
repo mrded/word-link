@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 0.0.3 - 2017-02-06
 ### Fixed
-- Use element.nodeName instead of element.constructor.name (fixes problems with phantomjs)
+- Use element.nodeName instead of element.constructor.name (fixes problems with phantomjs & IE)
 
 ## 0.0.2 - 2017-02-03
 ### Fixed
