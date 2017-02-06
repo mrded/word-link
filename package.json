@@ -1,6 +1,6 @@
 {
   "name": "word-link",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Allows you to automatically convert specific words into links",
   "main": "index.js",
   "scripts": {
