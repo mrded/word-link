@@ -39,18 +39,24 @@ var _replaceTextElement = function(element, word, url, opts) {
 
 var _replaceTagElement = function(element, word, url, opts) {
   //@TODO: Generate excludedTags based on opts.
-  var excludedTags = ['HTMLHeadingElement', 'HTMLAnchorElement'];
+  var excludedTags = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'A'];
 
-  for (var i in element.childNodes) {
-    var node = element.childNodes[i];
-    var type = node.constructor.name;
+  if (element.childNodes.length, element.childNodes) {
+    for (var i in element.childNodes) {
+      var node = element.childNodes[i];
+      var tag = node.nodeName;
 
-    if (type === "Text") {
-      _replaceTextElement(node, word, url, opts);
-    }
+      if (tag === undefined) {
+        // Ignore.
+      }
 
-    else if (excludedTags.indexOf(type) === -1) {
-      _replaceTagElement(node, word, url, opts);
+      else if (tag === "#text") {
+        _replaceTextElement(node, word, url, opts);
+      }
+
+      else if (excludedTags.indexOf(tag) === -1) {
+        _replaceTagElement(node, word, url, opts);
+      }
     }
   }
 };
