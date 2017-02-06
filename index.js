@@ -21,8 +21,9 @@ var _replaceTextElement = function(element, word, url, opts) {
   if (found) {
     found = _uniq(found);
 
-    //@TODO: Show debugging message based on opts.
-    console.info(':: Wordlink', found, url);
+    if (opts.debug) {
+      console.info(':: Wordlink', found, url);
+    }
 
     var newElement = document.createElement('span');
 
@@ -65,11 +66,11 @@ module.exports.applyText = function(text, word, url, opts) {
   var element = document.createElement('div');
   element.innerHTML = text;
 
-  applyElement(element, word, url, opts);
+  applyElement(element, word, url, opts || {});
 
   return element.innerHTML;
 };
 
 module.exports.applyElement = function(element, word, url, opts) {
-  _replaceTagElement(element, word, url, opts);
+  _replaceTagElement(element, word, url, opts || {});
 };
