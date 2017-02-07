@@ -39,9 +39,6 @@ var _replaceTextElement = function(element, word, url, opts) {
 };
 
 var _replaceTagElement = function(element, word, url, opts) {
-  //@TODO: Generate excludedTags based on opts.
-  var excludedTags = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'A'];
-
   if (element.childNodes.length, element.childNodes) {
     for (var i in element.childNodes) {
       var node = element.childNodes[i];
@@ -55,7 +52,7 @@ var _replaceTagElement = function(element, word, url, opts) {
         _replaceTextElement(node, word, url, opts);
       }
 
-      else if (excludedTags.indexOf(tag) === -1) {
+      else if (opts.excludedTags.indexOf(tag) === -1) {
         _replaceTagElement(node, word, url, opts);
       }
     }
@@ -66,11 +63,21 @@ module.exports.applyText = function(text, word, url, opts) {
   var element = document.createElement('div');
   element.innerHTML = text;
 
-  applyElement(element, word, url, opts || {});
+  applyElement(element, word, url, opts);
 
   return element.innerHTML;
 };
 
 module.exports.applyElement = function(element, word, url, opts) {
-  _replaceTagElement(element, word, url, opts || {});
+  opts = opts || {};
+  opts.excludedTags = opts.excludedTags || ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
+
+  opts.excludedTags.push('A');
+
+  // Capitalize tags.
+  opts.excludedTags = opts.excludedTags.map(function(tag) {
+    return tag.toUpperCase();
+  });
+
+  _replaceTagElement(element, word, url, opts);
 };

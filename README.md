@@ -10,6 +10,25 @@ Allows you to automatically convert specific words into links.
 
 ## Usage
 
+`WordLink.applyText(text, word|regexp, url, opts);`
+
+|   | Argument          | Type         | Default                                | Details                                                                      |
+|---|-------------------|--------------|----------------------------------------|------------------------------------------------------------------------------|
+| 1 | text              | `String`     |                                        | Text in which you want to replace the word to word-links.                    |
+| 2 | word              | `String`     |                                        | A String or RegExp that is to be replaced by word-link.                      |
+| 3 | url               | `String`     |                                        | A URL to be used to generate a word-link.                                    |
+| 4 | opts              | `Dictionary` |                                        | *(optional)* Additional seetings.                                            |
+|   | opts.debug        | `Boolean`    | `false`                                | *(optional)* Enable debugging mode. Shows a console.log with replaced words. |
+|   | opts.excludedTags | `Array`      | `['H1', 'H2', 'H3', 'H4', 'H5', 'H6']` | *(optional)* List of HTML tags to be ignored during replacement.             |
+
+### Returns
+**Type:** `String`
+
+Text with replaced word-links.
+
+
+## Examples
+
 ```javascript
 var WordLink = require('word-link');
 var text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
@@ -39,6 +58,6 @@ WordLink.applyText(html, 'ipsum', 'http://example.com');
 ```
 
 ## TODOs
-- [ ] A setting for tags to be ignored.
-(Currently only [HTMLHeadingElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHeadingElement) and [HTMLAnchorElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement) are ignored.)
+- [X] A setting for tags to be ignored.
 - [ ] Settings for a link.
+- [ ] Add tests.
