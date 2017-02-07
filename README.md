@@ -1,6 +1,6 @@
 # Word Link
 
-Allows you to automatically convert specific words into links.
+Allows you to convert specific words into links. Inspired by Drupal module [word_link](https://www.drupal.org/project/word_link).
 
 ## Installation
 

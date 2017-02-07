@@ -1,7 +1,7 @@
 {
   "name": "word-link",
   "version": "0.0.4",
-  "description": "Allows you to automatically convert specific words into links",
+  "description": "Allows you to convert specific words into links.",
   "main": "index.js",
   "scripts": {
     "test": "mocha --check-leaks"
