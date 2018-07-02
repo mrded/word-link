@@ -6,14 +6,26 @@ var _uniq = function(items) {
   });
 };
 
-var _createLink = function(text, url, opts) {
-  //@TODO: Generate a link based on opts.
-  return '<a href=":url" target="_blank">:text</a>'
-		.replace(':text', text)
-		.replace(':url', url);
+var _createLink = function(text, url, attributes) {
+  attributes = attributes || {};
+
+  var a = document.createElement('a');
+  var linkText = document.createTextNode(text);
+
+  a.appendChild(linkText);
+  a.href = url;
+
+  // Add given attributes.
+  for (var name in attributes) {
+    a[name] = attributes[name];
+  } 
+
+  return a.outerHTML;
 }
 
 var _replaceTextElement = function(element, word, url, opts) {
+  var opts = opts || {};
+
   //@TODO: Generate pattern based on opts.
   var pattern = "\\b:text\\b";
 
@@ -31,7 +43,7 @@ var _replaceTextElement = function(element, word, url, opts) {
 
     for (var j in found) {
       var foundRegexp = new RegExp(pattern.replace(':text', found[j]), 'g');
-      element.data = element.data.replace(foundRegexp, _createLink(found[j], url, opts));
+      element.data = element.data.replace(foundRegexp, _createLink(found[j], url, opts.attributes));
     }
 
     newElement.innerHTML = element.data;
@@ -41,6 +53,7 @@ var _replaceTextElement = function(element, word, url, opts) {
 };
 
 var _replaceTagElement = function(element, word, url, opts) {
+  //@TODO: WTF?
   if (element.childNodes.length, element.childNodes) {
     for (var i in element.childNodes) {
       var node = element.childNodes[i];
@@ -67,7 +80,11 @@ var applyText = function(text, word, url, opts) {
 
   applyElement(element, word, url, opts);
 
-  return element.innerHTML;
+  // The processed text will be wrapped into <SPAN>. 
+  // Return firstChild to keep it plaintext.
+  return element.firstChild.nodeName === '#text'
+    ? element.innerHTML
+    : element.firstChild.innerHTML;
 };
 
 var applyElement = function(element, word, url, opts) {
@@ -85,6 +102,6 @@ var applyElement = function(element, word, url, opts) {
 };
 
 module.exports = {
-	applyText: applyText,
-	applyElement: applyElement
+  applyText: applyText,
+  applyElement: applyElement
 };

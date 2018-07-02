@@ -20,6 +20,7 @@ Allows you to convert specific words into links. Inspired by Drupal module [word
 | 4 | opts              | `Dictionary` |                                        | *(optional)* Additional seetings.                                            |
 |   | opts.debug        | `Boolean`    | `false`                                | *(optional)* Enable debugging mode. Shows a console.log with replaced words. |
 |   | opts.excludedTags | `Array`      | `['H1', 'H2', 'H3', 'H4', 'H5', 'H6']` | *(optional)* List of HTML tags to be ignored during replacement.             |
+|   | opts.attributes   | `Object`     | `{target: '_blank'}`                   | *(optional)* Additional attributes for a link.                               |
 
 ### Returns
 **Type:** `String`
@@ -38,14 +39,14 @@ Replace words with a link:
 
 ```javascript
 WordLink.applyText(text, 'ipsum', 'http://example.com');
-// "Lorem <a href="http://example.com" target="_blank">ipsum</a> dolor sit amet, consectetur adipiscing elit."
+// "Lorem <a href="http://example.com">ipsum</a> dolor sit amet, consectetur adipiscing elit."
 ```
 
 Find words with regex and replace them with a link:
 
 ```javascript
 WordLink.applyText(text, '(ipsum|elit)', 'http://example.com');
-// "Lorem <a href="http://example.com" target="_blank">ipsum</a> dolor sit amet, consectetur adipiscing <a href="http://example.com" target="_blank">elit</a>."
+// "Lorem <a href="http://example.com">ipsum</a> dolor sit amet, consectetur adipiscing <a href="http://example.com">elit</a>."
 ```
 
 **Word Link** understands html. It will ignore existed links and tag attributes:
@@ -59,5 +60,6 @@ WordLink.applyText(html, 'ipsum', 'http://example.com');
 
 ## TODOs
 - [X] A setting for tags to be ignored.
-- [ ] Settings for a link.
+- [X] Additional attributes for a link.
 - [ ] Add tests.
+- [ ] Nodejs version.
