@@ -2,9 +2,9 @@ const _uniq = require('./uniq');
 const _createLink = require('./create-link'); 
 
 const replaceMany = function(text, words, url, attributes) {
-  for (let i in words) {
-    const foundRegexp = new RegExp(`\\b${words[i]}\\b`, 'g');
-    const link = _createLink(words[i], url, attributes);
+  for (let word of words) {
+    const foundRegexp = new RegExp(`\\b${word}\\b`, 'g');
+    const link = _createLink(word, url, attributes);
 
     text = text.replace(foundRegexp, link);
   }
@@ -45,9 +45,8 @@ module.exports = function(element, word, url, opts) {
     }
 
     const text = replaceMany(element.data, found, url, opts.attributes);
-    const newElement = createElement(text);
 
-    element.parentNode.replaceChild(newElement, element);
+    return createElement(text);
   }
 
   return element;
