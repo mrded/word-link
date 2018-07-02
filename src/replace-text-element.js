@@ -1,6 +1,27 @@
 const _uniq = require('./uniq');
 const _createLink = require('./create-link'); 
 
+const replaceMany = function(text, words, url, attributes) {
+  for (let i in words) {
+    const foundRegexp = new RegExp(`\\b${words[i]}\\b`, 'g');
+    const link = _createLink(words[i], url, attributes);
+
+    text = text.replace(foundRegexp, link);
+  }
+
+  return text;
+};
+
+/**
+ * Replace text inside an element.
+ *
+ * @param {object} element - The element.
+ * @param {string} word - The text to be replaced.
+ * @param {string} url - The url of a link.
+ * @param {object} opts - Options.
+ *
+ * @returns {object} An Element with word-links.
+ */
 module.exports = function(element, word, url, opts) {
   opts = opts || {};
 
@@ -19,13 +40,10 @@ module.exports = function(element, word, url, opts) {
 
     const newElement = document.createElement('span');
 
-    for (let j in found) {
-      const foundRegexp = new RegExp(pattern.replace(':text', found[j]), 'g');
-      element.data = element.data.replace(foundRegexp, _createLink(found[j], url, opts.attributes));
-    }
-
-    newElement.innerHTML = element.data;
+    newElement.innerHTML = replaceMany(element.data, found, url, opts.attributes);
 
     element.parentNode.replaceChild(newElement, element);
   }
+
+  return element;
 };

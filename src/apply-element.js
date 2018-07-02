@@ -1,4 +1,4 @@
-const _replaceTagElement = require('./replace-tag-element');
+const ReplaceTagElement = require('./replace-tag-element');
 
 module.exports = function(element, word, url, opts) {
   opts = opts || {};
@@ -11,5 +11,5 @@ module.exports = function(element, word, url, opts) {
     return tag.toUpperCase();
   });
 
-  _replaceTagElement(element, word, url, opts);
+  ReplaceTagElement(element, word, url, opts);
 };
