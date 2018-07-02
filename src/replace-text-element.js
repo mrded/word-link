@@ -26,9 +26,7 @@ module.exports = function(element, word, url, opts) {
   opts = opts || {};
 
   //@TODO: Generate pattern based on opts.
-  const pattern = "\\b:text\\b";
-
-  const findRegexp = new RegExp(pattern.replace(':text', word), 'ig');
+  const findRegexp = new RegExp(`\\b${word}\\b`, 'ig');
   let found = element.data.match(findRegexp);
 
   if (found) {
