@@ -12,6 +12,14 @@ const replaceMany = function(text, words, url, attributes) {
   return text;
 };
 
+const createElement = function(text) {
+  const newElement = document.createElement('span');
+
+  newElement.innerHTML = text.trim();
+
+  return newElement;
+};
+
 /**
  * Replace text inside an element.
  *
@@ -36,9 +44,8 @@ module.exports = function(element, word, url, opts) {
       console.info(':: Wordlink', found, url);
     }
 
-    const newElement = document.createElement('span');
-
-    newElement.innerHTML = replaceMany(element.data, found, url, opts.attributes);
+    const text = replaceMany(element.data, found, url, opts.attributes);
+    const newElement = createElement(text);
 
     element.parentNode.replaceChild(newElement, element);
   }
