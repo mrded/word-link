@@ -1,8 +1,8 @@
-const ReplaceTextElement = require('./replace-text-element');
+const ReplaceOneElement = require('./replace-one-element');
 
-const ReplaceTagElement = function(element, word, url, opts) {
+const ReplaceManyElement = function(element, word, url, opts) {
   // No children? Return!
-  if (!element.childNodes || !element.childNodes.length) {
+  if (!element.childNodes || element.childNodes.length <= 0) {
     return element;
   }
 
@@ -11,12 +11,12 @@ const ReplaceTagElement = function(element, word, url, opts) {
     let newNode = node;
 
     if (tag === "#text") {
-      newNode = ReplaceTextElement(node, word, url, opts);
+      newNode = ReplaceOneElement(node, word, url, opts);
     }
 
     // Check that tags are not excluded from search.
     else if (opts.excludedTags.indexOf(tag) === -1) {
-      newNode = ReplaceTagElement(node, word, url, opts);
+      newNode = ReplaceManyElement(node, word, url, opts);
     }
 
     // If there are changes - replace nodes.
@@ -26,4 +26,4 @@ const ReplaceTagElement = function(element, word, url, opts) {
   }
 };
 
-module.exports = ReplaceTagElement;
+module.exports = ReplaceManyElement;
