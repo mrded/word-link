@@ -8,7 +8,7 @@ const dom = new JSDOM('<!doctype html><html><body></body></html>');
 global.document = dom.window.document;
 global.window = global.document.defaultView;
 
-describe('Given plain text', function() {
+describe('index', function() {
   const url = 'https://demench.uk';
 
   it('Replace one word', function() {
