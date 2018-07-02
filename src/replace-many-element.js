@@ -1,8 +1,18 @@
 const ReplaceOneElement = require('./replace-one-element');
 
+/**
+ * Replace text inside an element with children.
+ *
+ * @param {object} element - The element.
+ * @param {string} word - The text to be replaced.
+ * @param {string} url - The url of a link.
+ * @param {object} opts - Options.
+ *
+ * @returns {object} An Element with word-links.
+ */
 const ReplaceManyElement = function(element, word, url, opts) {
   // No children? Return!
-  if (!element.childNodes || element.childNodes.length <= 0) {
+  if (!element.childNodes || element.childNodes.length === 0) {
     return element;
   }
 

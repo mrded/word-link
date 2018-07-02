@@ -21,7 +21,7 @@ const createElement = function(text) {
 };
 
 /**
- * Replace text inside an element.
+ * Replace text inside an element without children.
  *
  * @param {object} element - The element.
  * @param {string} word - The text to be replaced.
