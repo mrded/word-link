@@ -13,11 +13,11 @@ const replaceMany = function(text, words, url, attributes) {
 };
 
 const createElement = function(text) {
-  const newElement = document.createElement('span');
+  const element = document.createElement('span');
 
-  newElement.innerHTML = text.trim();
+  element.innerHTML = text.trim();
 
-  return newElement;
+  return element;
 };
 
 /**
