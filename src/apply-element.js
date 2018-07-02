@@ -11,5 +11,5 @@ module.exports = function(element, word, url, opts) {
     return tag.toUpperCase();
   });
 
-  ReplaceManyElement(element, word, url, opts);
+  return ReplaceManyElement(element, word, url, opts);
 };

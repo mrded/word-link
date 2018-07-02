@@ -16,7 +16,9 @@ const ReplaceManyElement = function(element, word, url, opts) {
     return element;
   }
 
-  for (let node of element.childNodes) {
+  const newElement = element.cloneNode(true);
+
+  for (let node of newElement.childNodes) {
     const tag = node.nodeName;
     let newNode = node;
 
@@ -34,6 +36,8 @@ const ReplaceManyElement = function(element, word, url, opts) {
       node.parentNode.replaceChild(newNode, node);
     }
   }
+
+  return newElement;
 };
 
 module.exports = ReplaceManyElement;
