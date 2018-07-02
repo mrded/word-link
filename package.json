@@ -4,7 +4,7 @@
   "description": "Allows you to convert specific words into links.",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha --check-leaks tests/index.js"
+    "test": "mocha --check-leaks src/*-spec.js"
   },
   "repository": {
     "type": "git",

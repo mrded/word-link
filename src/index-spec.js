@@ -1,5 +1,5 @@
 const Expect = require('chai').expect;
-const WordLink = require('../src/index.js');
+const WordLink = require('./index.js');
 
 // Define global `document` and `window` objects to act as a browser.
 const JSDOM = require("jsdom").JSDOM;
@@ -9,10 +9,11 @@ global.document = dom.window.document;
 global.window = global.document.defaultView;
 
 describe('Given plain text', function() {
+  const url = 'https://demench.uk';
+
   it('Replace one word', function() {
     const text = 'foo bar baz';
     const word = 'bar';
-    const url = 'https://demench.uk';
 
     const output = WordLink.applyText(text, word, url);
 
@@ -22,7 +23,6 @@ describe('Given plain text', function() {
   it('Replace two words', function() {
     const text = 'foo bar foo';
     const word = 'foo';
-    const url = 'https://demench.uk';
 
     const output = WordLink.applyText(text, word, url);
 
@@ -32,7 +32,6 @@ describe('Given plain text', function() {
   it('Replace only whole words', function() {
     const text = 'foobar baz';
     const word = 'bar';
-    const url = 'https://demench.uk';
 
     const output = WordLink.applyText(text, word, url);
 
@@ -42,7 +41,6 @@ describe('Given plain text', function() {
   it('Replace one word with regex', function() {
     const text = 'foo bar baz';
     const regex = "(bar)";
-    const url = 'https://demench.uk';
 
     const output = WordLink.applyText(text, regex, url);
 
@@ -52,7 +50,6 @@ describe('Given plain text', function() {
   it('Replace two words with regex', function() {
     const text = 'foo bar baz';
     const regex = "(foo|bar)";
-    const url = 'https://demench.uk';
 
     const output = WordLink.applyText(text, regex, url);
 
