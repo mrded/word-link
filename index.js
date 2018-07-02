@@ -2,13 +2,15 @@
 
 var _uniq = function(items) {
   return items.filter(function(item, pos) {
-    return items.indexOf(item) == pos;
+    return items.indexOf(item) === pos;
   });
 };
 
 var _createLink = function(text, url, opts) {
   //@TODO: Generate a link based on opts.
-  return '<a href=":url" target="_blank">:text</a>'.replace(':text', text).replace(':url', url);
+  return '<a href=":url" target="_blank">:text</a>'
+		.replace(':text', text)
+		.replace(':url', url);
 }
 
 var _replaceTextElement = function(element, word, url, opts) {
@@ -59,7 +61,7 @@ var _replaceTagElement = function(element, word, url, opts) {
   }
 };
 
-module.exports.applyText = function(text, word, url, opts) {
+var applyText = function(text, word, url, opts) {
   var element = document.createElement('div');
   element.innerHTML = text;
 
@@ -68,7 +70,7 @@ module.exports.applyText = function(text, word, url, opts) {
   return element.innerHTML;
 };
 
-module.exports.applyElement = function(element, word, url, opts) {
+var applyElement = function(element, word, url, opts) {
   opts = opts || {};
   opts.excludedTags = opts.excludedTags || ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
 
@@ -80,4 +82,9 @@ module.exports.applyElement = function(element, word, url, opts) {
   });
 
   _replaceTagElement(element, word, url, opts);
+};
+
+module.exports = {
+	applyText: applyText,
+	applyElement: applyElement
 };
