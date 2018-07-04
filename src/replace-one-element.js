@@ -2,6 +2,8 @@ const _uniq = require('./uniq');
 const _createLink = require('./create-link'); 
 
 const replaceMany = function(text, words, url, attributes) {
+  attributes = attributes || {};
+
   for (let word of words) {
     const foundRegexp = new RegExp(`\\b${word}\\b`, 'g');
     const link = _createLink(word, url, attributes);
