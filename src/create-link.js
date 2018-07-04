@@ -9,7 +9,14 @@ module.exports = function(text, url, attributes) {
 
   // Add given attributes.
   for (let name in attributes) {
-    a[name] = attributes[name];
+    switch (name) {
+      case 'class':
+        a.className = attributes[name];
+        break;
+
+      default: 
+        a[name] = attributes[name];
+    }
   } 
 
   return a.outerHTML;
