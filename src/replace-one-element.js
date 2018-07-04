@@ -17,7 +17,7 @@ const replaceMany = function(text, words, url, attributes) {
 const createElement = function(text) {
   const element = document.createElement('span');
 
-  element.innerHTML = text.trim();
+  element.innerHTML = text;
 
   return element;
 };
