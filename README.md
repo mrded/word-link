@@ -20,7 +20,7 @@ Allows you to convert specific words into links. Inspired by Drupal module [word
 | 4 | opts              | `Dictionary` |                                        | *(optional)* Additional seetings.                                            |
 |   | opts.debug        | `Boolean`    | `false`                                | *(optional)* Enable debugging mode. Shows a console.log with replaced words. |
 |   | opts.excludedTags | `Array`      | `['H1', 'H2', 'H3', 'H4', 'H5', 'H6']` | *(optional)* List of HTML tags to be ignored during replacement.             |
-|   | opts.attributes   | `Object`     | `{target: '_blank'}`                   | *(optional)* Additional attributes for a link.                               |
+|   | opts.attributes   | `Object`     | `{}`                                   | *(optional)* Additional attributes for a link.                               |
 
 ### Returns
 **Type:** `String`
