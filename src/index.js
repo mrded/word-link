@@ -1,4 +1,3 @@
 module.exports = {
-  applyText: require('./apply-text'),
-  applyElement: require('./apply-element')
+  apply: require('./apply-text'),
 };
