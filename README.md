@@ -2,6 +2,8 @@
 
 Allows you to convert specific words into links. Inspired by Drupal module [word_link](https://www.drupal.org/project/word_link).
 
+This can be useful for crossposting your site's pages, or for the contextual advertising of your partners (SEO).
+
 ## Installation
 
 - [Latest release](https://github.com/mrded/word-link/releases)
