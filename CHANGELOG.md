@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.0 - 2018-07-04
+### Added
+- Possibility to add attributes to a link.
+- Rename WordLink.applyText() -> WordLink.apply()
+- Unit tests.
+- Dist with compiled library.
+- Split up codebase by sub-modules.
+
 ## 0.0.4 - 2017-02-07
 ### Added
 - Option to enable debugging mode.

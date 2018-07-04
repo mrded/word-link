@@ -61,5 +61,5 @@ WordLink.apply(html, 'ipsum', 'http://example.com');
 ## TODOs
 - [X] A setting for tags to be ignored.
 - [X] Additional attributes for a link.
-- [ ] Add tests.
+- [X] Add tests.
 - [ ] Nodejs version.
