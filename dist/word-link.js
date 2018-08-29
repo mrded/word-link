@@ -1,7 +1,9 @@
 /**
- * word-link - @version v1.0.0 - @author Dmitry Demenchuk @mrded (dmitry@demenchuk.me)
+ * word-link - @version v1.0.1 - @author Dmitry Demenchuk @mrded (dmitry@demenchuk.me)
  */
 "use strict";
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 (function e(t, n, r) {
   function s(o, u) {
@@ -67,9 +69,25 @@
       return a.outerHTML;
     };
   }, {}], 4: [function (require, module, exports) {
-    module.exports = {
-      apply: require('./apply-text')
-    };
+    (function (root, factory) {
+      /* globals define */
+      if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define([], factory);
+      } else if ((typeof module === "undefined" ? "undefined" : _typeof(module)) === 'object' && typeof exports !== 'undefined') {
+        // Node. Does not work with strict CommonJS, but
+        // only CommonJS-like environments that support module.exports,
+        // like Node.
+        module.exports = factory();
+      } else {
+        // Browser globals (root is window)
+        root.WordLink = factory();
+      }
+    })(this, function () {
+      return {
+        apply: require('./apply-text')
+      };
+    });
   }, { "./apply-text": 2 }], 5: [function (require, module, exports) {
     var ReplaceOneElement = require('./replace-one-element');
 
