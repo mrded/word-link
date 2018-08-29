@@ -8,8 +8,13 @@
   "license": "MIT",
   "keywords": [
     "word",
+    "text",
     "link",
     "replace",
+    "linkify",
+    "auto-link",
+    "autolink",
+    "hyperlink",
     "SEO"
   ],
   "homepage": "https://github.com/mrded/word-link"

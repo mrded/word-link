@@ -2,7 +2,7 @@
   "name": "word-link",
   "version": "1.0.1",
   "description": "Allows you to convert specific words into links.",
-  "main": "src/index.js",
+  "main": "dist/word-link.js",
   "scripts": {
     "test": "mocha --check-leaks src/*-spec.js",
     "build": "gulp"
@@ -13,8 +13,13 @@
   },
   "keywords": [
     "word",
+    "text",
     "link",
     "replace",
+    "linkify",
+    "auto-link",
+    "autolink",
+    "hyperlink",
     "SEO"
   ],
   "author": "Dmitry Demenchuk @mrded (dmitry@demenchuk.me)",
