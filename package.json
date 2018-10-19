@@ -5,7 +5,7 @@
   "main": "dist/word-link.js",
   "scripts": {
     "test": "mocha --check-leaks src/*-spec.js",
-    "build": "gulp"
+    "build": "NODE_ENV=production gulp"
   },
   "repository": {
     "type": "git",
