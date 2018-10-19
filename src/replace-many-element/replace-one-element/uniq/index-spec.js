@@ -1,5 +1,5 @@
 const Expect = require('chai').expect;
-const Uniq = require('./uniq');
+const Uniq = require('./index');
 
 describe('uniq', function() {
   it('empty array', function() {

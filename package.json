@@ -4,7 +4,7 @@
   "description": "Allows you to convert specific words into links.",
   "main": "dist/word-link.js",
   "scripts": {
-    "test": "mocha --check-leaks src/*-spec.js",
+    "test": "mocha --check-leaks src/**/*-spec.js",
     "build": "NODE_ENV=production gulp"
   },
   "repository": {

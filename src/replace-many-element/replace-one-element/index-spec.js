@@ -1,5 +1,5 @@
 const Expect = require('chai').expect;
-const ReplaceOneElement = require('./replace-one-element.js');
+const ReplaceOneElement = require('./index.js');
 
 // Define global `document` and `window` objects to act as a browser.
 const JSDOM = require("jsdom").JSDOM;

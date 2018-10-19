@@ -1,5 +1,5 @@
 const Expect = require('chai').expect;
-const CreateLink = require('./create-link');
+const CreateLink = require('./index');
 
 describe('create-link', function() {
   it('create a link tag without attributes', function() {
