@@ -2,15 +2,15 @@
 
 const del = require('del');
 const gulp = require('gulp');
-const browserify = require('gulp-browserify');
-const babel = require('gulp-babel');
+const browserify = require('browserify');
 const rename = require('gulp-rename');
 const pkg = require('./package.json');
+const source = require('vinyl-source-stream');
 
 const gulpLoadPlugins = require('gulp-load-plugins');
 const plugins = gulpLoadPlugins();
 
-var banner = ['/**',
+const banner = ['/**',
   ' * <%= pkg.name %> - @version v<%= pkg.version %> - @author <%= pkg.author %>',
   ' */',
   ''].join('\n');
@@ -20,10 +20,12 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('build', ['clean'], function() {
-  return gulp.src(['./src/index.js'])
-    .pipe(browserify())
-    .pipe(babel({ presets: ["es2015"] }))
-    .pipe(rename({ basename: "word-link", extname: '.js' }))
+  return browserify('./src/index.js')
+    .transform("babelify", {
+      presets: ["@babel/preset-env"]
+    })
+    .bundle()
+    .pipe(source('word-link.js'))
     .pipe(plugins.header(banner, { pkg: pkg }))
     .pipe(gulp.dest('dist'));
 });
